@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <style>
+    /* Adjust the style of the image gallery */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    header {
+      text-align: center;
+      background-color: #f0f0f0;
+      padding: 20px;
+      margin-top: 50px; /* Add 50px top margin to the header to increase the gap */
+      font-size: 18px; /* Default font size for the title */
+    }
+
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Set the gallery height to at least the viewport height */
+      padding: 0;
+      list-style: none;
+      margin: 30px auto 0; /* Add 30px top margin to the gallery to create a gap above the first row */
+      overflow: hidden;
+    }
+
+    .image-item {
+      flex: 0 0 calc(33.33% - 20px); /* Make each image take 1/3 of the screen width with a 20px margin */
+      margin: 10px;
+      padding: 5px;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+
+    .image-item img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      max-height: 70vh; /* Set a maximum height for the images to avoid cropping */
+      display: block;
+      border-radius: 5px;
+    }
+
+    .image-description {
+      margin-top: 5px;
+    }
+
+    /* Additional styles for the footer */
+    footer {
+      background-color: #ddd;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Media query for mobile devices */
+    @media (max-width: 767px) {
+      .image-gallery {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .image-item {
+        flex: 0 0 calc(100% - 20px);
+        margin: 10px 0;
+      }
+
+      .image-description {
+        font-size: 14px;
+      }
+
+      header {
+        font-size: 10px; /* Adjust font size for the title on mobile */
+      }
+    }
+
+    /* Media query for smaller screens (adjust the breakpoint as needed) */
+    @media (max-width: 992px) {
+      .image-description {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Wofür kann 3D-Druck alles verwendet werden?</h2>
+  </header>
+<body>
+  <ul class="image-gallery">
+    <li class="image-item">
+      <img src="image1.png" alt="Image 1">
+      <div class="image-description">test</div>
+    </li>
+    <li class="image-item">
+      <img src="image2.png" alt="Image 2">
+      <div class="image-description">test</div>
+    </li>
+    <li class="image-item">
+      <img src="image3.png" alt="Image 3">
+      <div class="image-description">test</div>
+    </li>
+    <li class="image-item">
+      <img src="image4.png" alt="Image 4">
+      <div class="image-description">test</div>
+    </li>
+    <li class="image-item">
+      <img src="image5.png" alt="Image 5">
+      <div class="image-description">test</div>
+    </li>
+    <li class="image-item">
+      <img src="image6.png" alt="Image 6">
+      <div class="image-description">test</div>
+    </li>
+    <li class="image-item">
+      <img src="image7.png" alt="Image 7">
+      <div class="image-description">test</div>
+    </li>
+    <li class="image-item">
+      <img src="image8.png" alt="Image 8">
+      <div class="image-description">test</div>
+    </li>
+    <li class="image-item">
+      <img src="image9.png" alt="Image 9">
+      <div class="image-description">test</div>
+    </li>
+  </ul>
+</body>
+</html>

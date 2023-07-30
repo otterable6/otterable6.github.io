@@ -1,0 +1,8 @@
+enable  : true
+title   : "Beispiele unserer Arbeit:"
+subtitle: "Wofür kann 3D-Druck alles verwendet werden?"
+testimonial_item :
+  - thumb : "images/testimonial/user-thumb-one.jpg"
+    name  : "Simonns Hodge"
+    company_position: "CEO, Credito"
+    quote : > 

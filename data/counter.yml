@@ -1,0 +1,14 @@
+enable : true
+heading : "Sie können Ihren 3D-Druck schon morgen abholen!"
+counter_item: 
+  - title: "Produktionszeit"
+    number: "12-24h"
+
+  - title: "Preise ab"
+    number: "€5"
+
+  - title: "Preise für 3D-Modellierung"
+    number: "€18/h"
+
+  - title: "Abholungsort in"
+    number: "1020"

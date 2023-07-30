@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Print Size Calculator</title>
+  <style>
+    /* Center the calculator horizontally */
+    #calculator-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh; /* Optional: This will vertically center the calculator on the page */
+      font-size: 24px; /* Increase the font size */
+      color: black; /* Set text color to black */
+    }
+
+    /* Optional: Add some styles to make it visually appealing */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    h3 {
+      margin-top: 40px; /* Increase the gap above the title */
+      margin-bottom: 20px;
+      text-align: center; /* Center the text on all screen sizes */
+    }
+
+    label {
+      display: inline-block;
+      width: 200px; /* Increase the width of the labels */
+    }
+
+    input[type="number"] {
+      width: 180px; /* Increase the width of the input fields */
+      font-size: 20px; /* Increase the font size of input fields */
+      padding: 8px; /* Add some padding to the input fields */
+    }
+
+    /* Hide the total price container by default */
+    #total-price-container {
+      display: none;
+    }
+
+    /* Show the total price container if a valid price is calculated */
+    #total-price-container.show {
+      display: block;
+    }
+
+    #total-price-container p {
+      font-size: 48px; /* Increase the font size of the total price text */
+      font-weight: bold; /* Make the total price text bold */
+    }
+
+    /* Media query for smaller screen sizes */
+    @media (max-width: 768px) {
+      #calculator-container {
+        text-align: center; /* Center the text on smaller screens */
+      }
+    }
+	
+	h5 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+</style>
+  </style>
+</head>
+<body>
+  <div id="calculator-container">
+    <h3>Bestellformular</h3>
+
+    <form id="calculator-form">
+      <label for="length">Length (mm):</label>
+      <input type="number" id="length" name="length" max="220" required>
+      <br>
+
+      <label for="width">Width (mm):</label>
+      <input type="number" id="width" name="width" max="220" required>
+      <br>
+
+      <label for="height">Height (mm):</label>
+      <input type="number" id="height" name="height" max="250" required>
+      <br>
+	  <!-- New "Amount of Pieces" field -->
+      <label for="amount">Amount of Pieces:</label>
+      <input type="number" id="amount" name="amount" min="1" max="100" required>
+      <br>
+
+    </form>
+	
+	<h5 class="h5-gap">In diesem Formular können Sie den Preis für den Druck berechnen und automatisch bestellen.</h5>
+
+
+    <div id="total-price-container" class="show">
+      <!-- Total price message removed -->
+    </div>
+
+    <div class="stripe-buttons-container">
+      <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+
+      <!-- Stripe buy-button elements remain the same -->
+      </stripe-buy-button>
+
+	<stripe-buy-button id="buttonA5"
+		buy-button-id="buy_btn_1NZJ36Egtx1au46GH8zqtxcU"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA8"
+		buy-button-id="buy_btn_1NZJ38Egtx1au46GwNILJLRl"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA10"
+		buy-button-id="buy_btn_1NZJ38Egtx1au46GzwyqRqcf"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA12"
+		buy-button-id="buy_btn_1NZJ39Egtx1au46G7HuJmjjP"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+	<stripe-buy-button id="buttonA14"
+    buy-button-id="buy_btn_1NZJ3AEgtx1au46GaNhs22qO"
+    publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA16"
+		buy-button-id="buy_btn_1NZJ3BEgtx1au46GTXq8IAek"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA18"
+		buy-button-id="buy_btn_1NZJ3BEgtx1au46GTXq8IAek"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+	<stripe-buy-button id="buttonA20"
+		buy-button-id="buy_btn_1NZJ3CEgtx1au46GgopAjJLJ"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA22"
+		buy-button-id="buy_btn_1NZJ3DEgtx1au46GLVW4Xlxy"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA24"
+		buy-button-id="buy_btn_1NZJ3DEgtx1au46GioXoXqyl"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA26"
+		buy-button-id="buy_btn_1NZJ3EEgtx1au46GVWSj4hUN"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA28"
+		buy-button-id="buy_btn_1NZJ3FEgtx1au46G8HDO3sdW"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+	<stripe-buy-button id="buttonA30"
+    buy-button-id="buy_btn_1NZJEcEgtx1au46GaxFxAmJH"
+    publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA32"
+		buy-button-id="buy_btn_1NZJEdEgtx1au46Gcp3zuexo"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA34"
+		buy-button-id="buy_btn_1NZJEeEgtx1au46GUcMQxeOt"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA36"
+		buy-button-id="buy_btn_1NZJEeEgtx1au46GUcMQxeOt"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA38"
+		buy-button-id="buy_btn_1NZJEfEgtx1au46Gv6HvieQQ"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+	<stripe-buy-button id="buttonA40"
+		buy-button-id="buy_btn_1NZJEgEgtx1au46GapYZZZWz"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA42"
+		buy-button-id="buy_btn_1NZJEgEgtx1au46GapYZZZWz"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA44"
+		buy-button-id="buy_btn_1NZJEiEgtx1au46GJg6owtxi"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA46"
+		buy-button-id="buy_btn_1NZJEiEgtx1au46GJg6owtxi"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+	<stripe-buy-button id="buttonA48"
+		buy-button-id="buy_btn_1NZJEjEgtx1au46GmYorY8WU"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA50"
+		buy-button-id="buy_btn_1NZJEjEgtx1au46GdKrZsmR9"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA55"
+		buy-button-id="buy_btn_1NZJEkEgtx1au46GF4PsOMLO"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+	<stripe-buy-button id="buttonA60"
+    buy-button-id="buy_btn_1NZJQHEgtx1au46G19kAJUZu"
+    publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA65"
+		buy-button-id="buy_btn_1NZJElEgtx1au46GfLvTKQAV"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA70"
+		buy-button-id="buy_btn_1NZJEmEgtx1au46GjPR6eCjW"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA75"
+		buy-button-id="buy_btn_1NZJEmEgtx1au46Gkn8RzdTC"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA80"
+		buy-button-id="buy_btn_1NZJEnEgtx1au46GBph0MtDj"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA85"
+		buy-button-id="buy_btn_1NZJEnEgtx1au46GBph0MtDj"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+
+	<stripe-buy-button id="buttonA90"
+		buy-button-id="buy_btn_1NZJEoEgtx1au46GkWsmWPm7"
+		publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+	<stripe-buy-button id="buttonA100"
+    buy-button-id="buy_btn_1NZJEpEgtx1au46GX8eTIiAU"
+    publishable-key="pk_live_51Lxm6sEgtx1au46GHhDtjk3JZ04OaA8p7T6xM4lQFLxfbPotRsuT4AhoM4WA0myCsirZeQN32vnUvUSmn1zVyD3m00docojbx7"
+	>
+	</stripe-buy-button>
+    </div>
+
+    <script>
+      // Calculate the total price and display the relevant Stripe button
+      function calculateTotalPrice() {
+        let length = parseFloat(document.getElementById('length').value);
+        let width = parseFloat(document.getElementById('width').value);
+        let height = parseFloat(document.getElementById('height').value);
+        let amount = parseInt(document.getElementById('amount').value);
+
+        // Enforce maximum limits for length, width, and height
+        length = Math.min(Math.max(length, 0), 220);
+        width = Math.min(Math.max(width, 0), 220);
+        height = Math.min(Math.max(height, 0), 250);
+        amount = Math.min(Math.max(amount, 1), 100);
+
+
+        // Correct the values if they are higher than the maximum limits
+        document.getElementById('length').value = length;
+        document.getElementById('width').value = width;
+        document.getElementById('height').value = height;
+		document.getElementById('amount').value = amount;
+
+
+        // Calculate the total volume (length + width + height) and the PricePerPiece
+        const totalVolume = length + width + height;
+        let pricePerPiece = 0;
+
+        if (totalVolume <= 80) {
+          pricePerPiece = 0.5;
+        } else if (totalVolume <= 100) {
+          pricePerPiece = 0.6;
+        } else if (totalVolume <= 120) {
+          pricePerPiece = 0.8;
+        } else if (totalVolume <= 140) {
+          pricePerPiece = 1;
+        } else if (totalVolume <= 160) {
+          pricePerPiece = 1.2;
+        } else if (totalVolume <= 180) {
+          pricePerPiece = 1.4;
+        } else if (totalVolume <= 200) {
+          pricePerPiece = 1.6;
+        } else if (totalVolume <= 220) {
+          pricePerPiece = 1.8;
+        } else if (totalVolume <= 240) {
+          pricePerPiece = 2;
+        } else if (totalVolume <= 260) {
+          pricePerPiece = 1.6;
+        } else if (totalVolume <= 280) {
+          pricePerPiece = 1.8;
+        } else if (totalVolume <= 300) {
+          pricePerPiece = 2;
+        } else if (totalVolume <= 320) {
+          pricePerPiece = 2.2;
+        } else if (totalVolume <= 340) {
+          pricePerPiece = 2.4;
+        } else if (totalVolume <= 360) {
+          pricePerPiece = 2.6;
+        } else if (totalVolume <= 380) {
+          pricePerPiece = 2.8;
+        } else if (totalVolume <= 400) {
+          pricePerPiece = 3;
+        } else if (totalVolume <= 420) {
+          pricePerPiece = 3.2;
+        } else if (totalVolume <= 440) {
+          pricePerPiece = 3.4;
+        } else if (totalVolume <= 460) {
+          pricePerPiece = 3.6;
+        } else if (totalVolume <= 480) {
+          pricePerPiece = 3.8;
+        } else if (totalVolume <= 500) {
+          pricePerPiece = 4;
+        } else if (totalVolume <= 520) {
+          pricePerPiece = 4.2;
+        } else if (totalVolume <= 540) {
+          pricePerPiece = 4.2;
+        } else if (totalVolume <= 560) {
+          pricePerPiece = 4.4;
+        } else if (totalVolume <= 580) {
+          pricePerPiece = 4.6;
+        } else if (totalVolume <= 600) {
+          pricePerPiece = 4.8;
+        } else if (totalVolume <= 620) {
+          pricePerPiece = 5;
+        } else if (totalVolume <= 640) {
+          pricePerPiece = 5.2;
+        } else if (totalVolume <= 660) {
+          pricePerPiece = 5.4;
+        } else if (totalVolume <= 680) {
+          pricePerPiece = 5.7;
+        } else if (totalVolume <= 690) {
+          pricePerPiece = 6;
+        }
+
+        const totalPrice = pricePerPiece * amount;
+
+        document.getElementById('total-price-container').classList.add("show");
+
+        const buttons = document.querySelectorAll('stripe-buy-button');
+        buttons.forEach((button) => {
+          button.style.display = 'none';
+        });
+
+        // Show the corresponding Stripe button based on the totalPrice
+        let buttonId = "";
+
+        if (totalPrice <= 5) {
+          buttonId = "buy_btn_1NZJ36Egtx1au46GH8zqtxcU";
+        } else if (totalPrice <= 6) {
+          buttonId = "buy_btn_1NZJ38Egtx1au46GwNILJLRl";
+        } else if (totalPrice <= 8) {
+          buttonId = "buy_btn_1NZJ38Egtx1au46GzwyqRqcf";
+        } else if (totalPrice <= 10) {
+          buttonId = "buy_btn_1NZJ39Egtx1au46G7HuJmjjP";
+        } else if (totalPrice <= 12) {
+          buttonId = "buttonA12";
+        } else if (totalPrice <= 14) {
+          buttonId = "buy_btn_1NZJ3AEgtx1au46GaNhs22qO";
+        } else if (totalPrice <= 16) {
+          buttonId = "buy_btn_1NZJ3BEgtx1au46GTXq8IAek";
+        } else if (totalPrice <= 18) {
+          buttonId = "buttonA18";
+        } else if (totalPrice <= 20) {
+          buttonId = "buy_btn_1NZJ3CEgtx1au46GgopAjJLJ";
+        } else if (totalPrice <= 22) {
+          buttonId = "buy_btn_1NZJ3DEgtx1au46GLVW4Xlxy";
+        } else if (totalPrice <= 24) {
+          buttonId = "buy_btn_1NZJ3DEgtx1au46GioXoXqyl";
+        } else if (totalPrice <= 26) {
+          buttonId = "buy_btn_1NZJ3EEgtx1au46GVWSj4hUN";
+        } else if (totalPrice <= 28) {
+          buttonId = "buy_btn_1NZJ3FEgtx1au46G8HDO3sdW";
+        } else if (totalPrice <= 30) {
+          buttonId = "buy_btn_1NZJEcEgtx1au46GaxFxAmJH";
+        } else if (totalPrice <= 32) {
+          buttonId = "buy_btn_1NZJEdEgtx1au46Gcp3zuexo";
+        } else if (totalPrice <= 34) {
+          buttonId = "buy_btn_1NZJEeEgtx1au46GUcMQxeOt";
+        } else if (totalPrice <= 36) {
+          buttonId = "buttonA36";
+        } else if (totalPrice <= 38) {
+          buttonId = "buy_btn_1NZJEeEgtx1au46GUcMQxeOt";
+        } else if (totalPrice <= 40) {
+          buttonId = "buy_btn_1NZJEgEgtx1au46GapYZZZWz";
+        } else if (totalPrice <= 42) {
+          buttonId = "buttonA42";
+        } else if (totalPrice <= 44) {
+          buttonId = "buy_btn_1NZJEiEgtx1au46GJg6owtxi";
+        } else if (totalPrice <= 46) {
+          buttonId = "buttonA46";
+        } else if (totalPrice <= 48) {
+          buttonId = "buy_btn_1NZJEjEgtx1au46GmYorY8WU";
+        } else if (totalPrice <= 50) {
+          buttonId = "buy_btn_1NZJEjEgtx1au46GdKrZsmR9";
+        } else if (totalPrice <= 55) {
+          buttonId = "buy_btn_1NZJEkEgtx1au46GF4PsOMLO";
+        } else if (totalPrice <= 60) {
+          buttonId = "buy_btn_1NZJQHEgtx1au46G19kAJUZu";
+        } else if (totalPrice <= 65) {
+          buttonId = "buy_btn_1NZJElEgtx1au46GfLvTKQAV";
+        } else if (totalPrice <= 70) {
+          buttonId = "buy_btn_1NZJEmEgtx1au46GjPR6eCjW";
+        } else if (totalPrice <= 75) {
+          buttonId = "buy_btn_1NZJEmEgtx1au46Gkn8RzdTC";
+        } else if (totalPrice <= 80) {
+          buttonId = "buy_btn_1NZJEnEgtx1au46GBph0MtDj";
+        } else if (totalPrice <= 85) {
+          buttonId = "buttonA85";
+        } else if (totalPrice <= 90) {
+          buttonId = "buy_btn_1NZJEoEgtx1au46GkWsmWPm7";
+        } else if (totalPrice <= 95) {
+          buttonId = "buy_btn_1NZJEpEgtx1au46GX8eTIiAU";
+        } else if (totalPrice <= 100) {
+          buttonId = "buttonA100";
+        }
+
+        const selectedButton = document.querySelector(`[buy-button-id="${buttonId}"]`);
+        if (selectedButton) {
+          selectedButton.style.display = 'block';
+        }
+      }
+
+      // Add event listeners to calculate the total price when the user types in the input fields
+      const lengthInput = document.getElementById('length');
+      const widthInput = document.getElementById('width');
+      const heightInput = document.getElementById('height');
+      const amountInput = document.getElementById('amount');
+
+      lengthInput.addEventListener('input', calculateTotalPrice);
+      widthInput.addEventListener('input', calculateTotalPrice);
+      heightInput.addEventListener('input', calculateTotalPrice);
+      amountInput.addEventListener('input', calculateTotalPrice);
+
+      // Calculate total price on page load
+      calculateTotalPrice();
+    </script>
+	

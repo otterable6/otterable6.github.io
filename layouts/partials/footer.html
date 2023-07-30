@@ -1,0 +1,80 @@
+<footer class="site-footer">
+    <div class="container">
+      <div class="row justify-content-center"> <!-- Center the logo and widget entities -->
+        <div class="col-12 col-lg-3 col-md-6 text-center"> <!-- Center the logo on all screen sizes -->
+          <div class="site-footer-logo"><a href="{{ .Site.BaseURL }}"><img src="{{ "erminelogofooters2.png" | absURL }}" alt="logo-footer"></a></div>
+        </div>
+      </div>
+      <div class="row justify-content-center"> <!-- Center the widget entities -->
+        {{ with .Site.Params.footer.contactInfo }}
+        <div class="col-lg-3 col-md-6 text-center"> <!-- Center the widget content on larger screens -->
+          <div class="site-footer-widget">
+            <h5 class="site-footer-widget-title">{{ .title }}</h5>
+            <p class="site-footer-widget-description">
+              {{ .address | safeHTML }}
+              <br>
+              <a href="tel:{{ .phone }}">{{ .phone }}</a>
+              <br>
+              <a href="mailto:{{ .email }}">{{ .email }}</a>
+            </p>
+          </div>
+        </div>
+        {{ end }}
+        {{ with .Site.Params.footer.sitemap }}
+        <div class="col-lg-2 col-md-6 text-center"> <!-- Center the widget content on larger screens -->
+          <div class="site-footer-widget">
+            <h5 class="site-footer-widget-title">{{ .title }}</h5>
+            <ul class="site-footer-widget-links">
+              {{ range .link }}
+              <li><a href="{{ .url | absURL }}">{{ .name }}</a></li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+        {{ end }}
+        {{ with .Site.Params.footer.service }}
+        <div class="col-lg-3 col-md-6 text-center"> <!-- Center the widget content on larger screens -->
+          <div class="site-footer-widget">
+            <h5 class="site-footer-widget-title">{{ .title }}</h5>
+            <p class="site-footer-widget-description">
+              {{ .description | safeHTML }}
+            </p>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-12">
+          <div class="site-footer-copyright text-center"> <!-- Center the copyright text -->
+            <p>An <a href="https://ermine.de" target="_blank">Ermine</a> project ♥ ♥</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<!-- {{ $formhandler := resources.Get "js/formhandler.js" | minify }}
+<script src="{{ $formhandler.Permalink }}"></script> -->
+{{ $vendor := resources.Get "js/vendor.js" | minify }}
+<script src="{{ $vendor.Permalink }}"></script>
+{{ $script := resources.Get "js/script.js" | minify }}
+<script src="{{ $script.Permalink }}"></script>
+
+
+  <style>
+    /* CSS for responsive image */
+    .site-footer-logo img {
+      max-width: 100%;
+      height: auto;
+    }
+	
+	/* CSS to center the site-footer-widget */
+    .site-footer-widget {
+      text-align: center;
+    }
+	
+    /* Center the columns within the row */
+    .row.justify-content-center {
+      justify-content: center;
+    }
+  </style>

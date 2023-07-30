@@ -1,0 +1,23 @@
+{{ with .Site.Data.counter }}
+  {{ if .enable }}
+  <section class="site-counter" id="counter">
+    <div class="container">
+      <div class="row justify-content-center"> <!-- Center the row contents -->
+        <div class="col-12 text-center"> <!-- Center the section title -->
+          <div class="section-title">
+            <h2 class="text-white">{{ .heading }}</h2>
+          </div>
+        </div>
+        {{ range .counter_item }}
+        <div class="col-lg-3 col-md-6 d-flex justify-content-center"> <!-- Center the counter items -->
+          <div class="site-counter-item text-center"> <!-- Center the counter item content -->
+            <span class="site-counter-item-title">{{ .title }}</span>
+            <h3 class="site-counter-item-number">{{ .number }}</h3>
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+  {{ end }}
+{{ end }}
