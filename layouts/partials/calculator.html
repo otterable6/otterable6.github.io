@@ -34,7 +34,7 @@
     }
 
     input[type="number"] {
-      width: 180px; /* Increase the width of the input fields */
+      width: 250px; /* Increase the width of the input fields */
       font-size: 20px; /* Increase the font size of input fields */
       padding: 8px; /* Add some padding to the input fields */
     }
@@ -65,35 +65,75 @@
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
+	
   }
+  
+    /* Center the submit button */
+	.center-button {
+	  display: block;
+	  margin: 0 auto;
+	  text-align: center;
+  }
+  
+  
+
 </style>
   </style>
 </head>
 <body>
   <div id="calculator-container">
-    <h3>Bestellformular</h3>
+	<h3 class="h3-gap"><strong>Bestellformular:</strong></h3>
 
-    <form id="calculator-form">
-      <label for="length">Length (mm):</label>
+      <form id="calculator-form" action="http://localhost:5000/upload" method="POST" enctype="multipart/form-data">
+      <label for="length"><strong>Länge</strong> (mm):</label>
       <input type="number" id="length" name="length" max="220" required>
       <br>
 
-      <label for="width">Width (mm):</label>
+      <label for="width"><strong>Breite</strong> (mm):</label>
       <input type="number" id="width" name="width" max="220" required>
       <br>
 
-      <label for="height">Height (mm):</label>
+      <label for="height"><strong>Höhe</strong> (mm):</label>
       <input type="number" id="height" name="height" max="250" required>
       <br>
 	  <!-- New "Amount of Pieces" field -->
-      <label for="amount">Amount of Pieces:</label>
+      <label for="amount"><strong>Stückzahl:</strong></label>
       <input type="number" id="amount" name="amount" min="1" max="100" required>
       <br>
+	  
+	  <form id="calculator-form" action="{{ .Site.BaseURL }}upload" method="POST" enctype="multipart/form-data">
+    <!-- Existing form fields -->
+
+    <div class="center-content">
+    <label for="uploadFile"><strong>Modell</strong> (.stl/.obj):</label>
+<input type="file" name="fileToUpload" id="fileToUpload" style="width: 250px;">
+    <br>
+</div>
+
+
+    <!-- Your other form fields -->
+
+    <button class="center-button" type="submit" style="width: 250px;">Hochladen</button>
+
+
+</form>
+<div id="uploadStatus"></div> <!-- This is where the upload status will be displayed -->
+
+<p id="uploadMessage"></p> <!-- This is where the message will be displayed -->
+
+
+
+
+ 
+
 
     </form>
-	
+	<div class="container">
+	<h5 class="h5-gap">Die maximale Länge, Breite und Höhe beträgt <strong>210 mm</strong>, maximale Stückzahl beträgt <strong>100</strong>.</h5>
 	<h5 class="h5-gap">In diesem Formular können Sie den Preis für den Druck berechnen und automatisch bestellen.</h5>
-
+	<h5 class="h4">	<h5 class="h5">Wenn Sie keinen 3D-Drucker besitzen oder nicht wissen, wie Sie Ihr 3D-Druck-Projekt angehen sollen, <strong>sind wir für Sie da!</strong></h5>
+	
+	</div>
 
     <div id="total-price-container" class="show">
       <!-- Total price message removed -->
@@ -300,9 +340,9 @@
         let amount = parseInt(document.getElementById('amount').value);
 
         // Enforce maximum limits for length, width, and height
-        length = Math.min(Math.max(length, 0), 220);
-        width = Math.min(Math.max(width, 0), 220);
-        height = Math.min(Math.max(height, 0), 250);
+        length = Math.min(Math.max(length, 0), 210);
+        width = Math.min(Math.max(width, 0), 210);
+        height = Math.min(Math.max(height, 0), 210);
         amount = Math.min(Math.max(amount, 1), 100);
 
 
@@ -391,8 +431,18 @@
         buttons.forEach((button) => {
           button.style.display = 'none';
         });
+		
+		
 
         // Show the corresponding Stripe button based on the totalPrice
+		if (totalPrice > 100) {
+                // Show the WhatsApp button
+                document.getElementById("whatsappButtonSection").style.display = "block";
+            } else {
+                // Hide the WhatsApp button
+                document.getElementById("whatsappButtonSection").style.display = "none";
+            }
+		
         let buttonId = "";
 
         if (totalPrice <= 5) {
@@ -404,13 +454,13 @@
         } else if (totalPrice <= 10) {
           buttonId = "buy_btn_1NZJ39Egtx1au46G7HuJmjjP";
         } else if (totalPrice <= 12) {
-          buttonId = "buttonA12";
+          buttonId = "buy_btn_1NZJ3AEgtx1au46GaNhs22qO";
         } else if (totalPrice <= 14) {
           buttonId = "buy_btn_1NZJ3AEgtx1au46GaNhs22qO";
         } else if (totalPrice <= 16) {
           buttonId = "buy_btn_1NZJ3BEgtx1au46GTXq8IAek";
         } else if (totalPrice <= 18) {
-          buttonId = "buttonA18";
+          buttonId = "buy_btn_1NZJ3CEgtx1au46GgopAjJLJ";
         } else if (totalPrice <= 20) {
           buttonId = "buy_btn_1NZJ3CEgtx1au46GgopAjJLJ";
         } else if (totalPrice <= 22) {
@@ -428,17 +478,17 @@
         } else if (totalPrice <= 34) {
           buttonId = "buy_btn_1NZJEeEgtx1au46GUcMQxeOt";
         } else if (totalPrice <= 36) {
-          buttonId = "buttonA36";
+          buttonId = "buy_btn_1NZJEfEgtx1au46GSPYl4aEf";
         } else if (totalPrice <= 38) {
           buttonId = "buy_btn_1NZJEeEgtx1au46GUcMQxeOt";
         } else if (totalPrice <= 40) {
           buttonId = "buy_btn_1NZJEgEgtx1au46GapYZZZWz";
         } else if (totalPrice <= 42) {
-          buttonId = "buttonA42";
+          buttonId = "buy_btn_1NZJEhEgtx1au46G0GzYqZtQ";
         } else if (totalPrice <= 44) {
           buttonId = "buy_btn_1NZJEiEgtx1au46GJg6owtxi";
         } else if (totalPrice <= 46) {
-          buttonId = "buttonA46";
+          buttonId = "buy_btn_1NZJEiEgtx1au46GuP3xco5E";
         } else if (totalPrice <= 48) {
           buttonId = "buy_btn_1NZJEjEgtx1au46GmYorY8WU";
         } else if (totalPrice <= 50) {
@@ -456,14 +506,16 @@
         } else if (totalPrice <= 80) {
           buttonId = "buy_btn_1NZJEnEgtx1au46GBph0MtDj";
         } else if (totalPrice <= 85) {
-          buttonId = "buttonA85";
-        } else if (totalPrice <= 90) {
           buttonId = "buy_btn_1NZJEoEgtx1au46GkWsmWPm7";
+        } else if (totalPrice <= 90) {
+          buttonId = "buy_btn_1NZJEoEgtx1au46GUp8Me0mY";
         } else if (totalPrice <= 95) {
           buttonId = "buy_btn_1NZJEpEgtx1au46GX8eTIiAU";
         } else if (totalPrice <= 100) {
-          buttonId = "buttonA100";
+          buttonId = "buy_btn_1NZJEqEgtx1au46GQcEfwJL7"; 
         }
+		
+		
 
         const selectedButton = document.querySelector(`[buy-button-id="${buttonId}"]`);
         if (selectedButton) {
@@ -486,3 +538,231 @@
       calculateTotalPrice();
     </script>
 	
+	
+ <div class="col-12 text-center" id="whatsappButtonSection" style="display: none;">
+        <p style="font-size: 38px; font-weight: bold; color: black;">
+            
+        </p>
+
+        <a title="Kontakt per WhatsApp" href="whatsapp://send?phone=00436703596614">
+            <button class="whatsapp-button">Individuelle Bestellung per WhatsApp</button>
+        </a>
+
+        <p style="font-size: 28px; color: black;">
+            (+43 670 359 66 14)
+        </p>
+    </div>
+	
+	<h3 class="h3-gap"><strong>Bestellanleitung:</strong></h3>
+		
+	<h5 class="h5"><strong>1.</strong> Wählen Sie die gewünschten Druckabmessungen. Der Endpreis wird generiert. Dann klicken Sie auf <strong>„Bestellen“.</strong></h8>
+<!-- HTML code with CSS class applied -->
+<h5 class="h5">
+  <strong>2.</strong> Auf dem Zahlungsportal befinden sich mehrere Felder – 
+  <strong class="custom-color-red">Druckdatei (.stl/.obj),</strong> 
+  <strong class="custom-color-blue">Druckfarbe</strong> und 
+  <strong class="custom-color-orange">Anmerkungen.</strong> Bitte füllen Sie diese aus.
+</h5>	<h5 class="h5-gap"><strong>3.</strong> Die Bestellung wird innerhalb der nächsten <strong>1-2 Tage</strong> zur Abholung bereitgestellt oder per Post verschickt. Viel Spaß!</h5>
+	
+	
+	
+		<h3 class="h3-gap"><strong>FAQ:</strong></h3>
+		<h4>A) Wo bekomme ich kostenlose 3D-Modelldateien?</h4>
+		<h5>Sie können kostenlose 3D-Modelldateien bei <a href="https://www.thingiverse.com/">Thingiverse</a> oder <a href="https://cults3d.com/">Cults3D</a> erhalten.</h5>
+		<h4>B) Wie sende ich Ihnen die 3D-Daten zum Drucken zu?</h4>
+		<h5>Laden Sie das Modell über unser Bestellformular hoch. Bitte geben Sie bei der Bestellung den Modellnamen an.</h5>
+		<h4>C) Welche Art von Material verwenden Sie zum Drucken?</h4>
+		<h5>Wir verwenden ausschließlich PLA-Drucker. Resin -Druck auf Anfrage möglich.</h5>
+		<h4>D) Ich möchte ein individuelles Modell. Können Sie es mir modellieren?</h4>
+		<h5>Bitte kontaktieren Sie uns per WhatsApp oder per Kontaktformular.</h5>
+
+
+
+	<style>
+  .custom-color-red {
+    color: #D62828;
+  }
+
+  .custom-color-blue {
+    color: #003049;
+  }
+
+  .custom-color-orange {
+    color: #F77F00;
+  }
+</style>
+	
+	
+ <style>
+ 
+ 
+ 
+	 /* Style for the WhatsApp button link text */
+		#whatsapp-button-link span {
+		  font-size: 16px; /* Adjust the font size as needed */
+		  white-space: nowrap; /* Prevent text from wrapping */
+		}
+    /* Style for the WhatsApp button container */
+    #whatsapp-button-container {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    /* Style for the WhatsApp button */
+    #whatsapp-button-link {
+      display: flex;
+      align-items: center;
+      background-color: green;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Style for the WhatsApp button icon */
+    #whatsapp-button-icon {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    /* Style for the tooltip container */
+    #tooltip {
+    position: absolute;
+    display: none;
+    width: auto;
+    max-width: 580px;
+    top: 50%;
+    right: calc(100% + 20px); /* Position to the left of the button */
+    transform: translateY(-50%);
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: nowrap; /* Force text to stay on one line */
+    font-size: 20px; /* Increase the font size */
+    line-height: 1.4;
+    z-index: 9998;
+  }
+  
+  /* Media query for smaller screens (e.g., mobile devices) */
+  @media only screen and (max-width: 768px) {
+    #tooltip {
+      font-size: 14px; /* Adjust the font size for smaller screens */
+      max-width: 440px; /* Reduce max-width for better fit on smaller screens */
+    }
+  }
+
+    /* Style for the tooltip arrow */
+    #tooltip::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -10px; /* Position the arrow just to the left of the tooltip */
+      transform: translateY(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: transparent transparent transparent #000;
+    }
+  </style>
+</head>
+
+
+  <!-- WhatsApp button container -->
+  <div id="whatsapp-button-container">
+    <a id="whatsapp-button-link" href="" target="_blank" onmouseover="showTooltip()" onmouseout="hideTooltip()">
+      <img src="whatsapp_icon.png" alt="WhatsApp" width="50" height="50">
+    </a>
+    <!-- Tooltip container -->
+    <div id="tooltip">Fragen? Individuelle Bestellung? +43 670 359 66 14</div>
+  </div>
+
+  <!-- Your existing scripts -->
+
+  <script>
+    // JavaScript code to show/hide WhatsApp button based on the price
+    function checkPriceAndToggleWhatsAppButton(price) {
+      var whatsappButtonContainer = document.getElementById('whatsapp-button-container');
+      var whatsappButtonLink = document.getElementById('whatsapp-button-link');
+      var phoneNumber = "00436703596614"; // Replace with the actual phone number
+
+      if (price > 100) {
+        whatsappButtonLink.href = "https://api.whatsapp.com/send?phone=" + phoneNumber;
+        whatsappButtonContainer.style.display = 'block';
+      } else {
+        whatsappButtonContainer.style.display = 'none';
+      }
+    }
+	
+	
+
+    // Function to show the tooltip
+    function showTooltip() {
+      var tooltip = document.getElementById('tooltip');
+      tooltip.style.display = 'block';
+    }
+
+    // Function to hide the tooltip
+    function hideTooltip() {
+      var tooltip = document.getElementById('tooltip');
+      tooltip.style.display = 'none';
+    }
+
+    // Replace '100' with the actual threshold price
+    var currentPrice = 120; // Example: You should get the actual price value dynamically
+
+    // Initial check when the page loads
+    checkPriceAndToggleWhatsAppButton(currentPrice);
+  </script>
+
+
+
+    <style>
+        /* CSS for WhatsApp button */
+        .whatsapp-button {
+            background-color: #25d366; /* Green color */
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128c7e; /* Darker green on hover */
+        }
+    </style>
+	
+	<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("calculator-form");
+        const uploadMessage = document.getElementById("uploadMessage");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: "POST",
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    uploadMessage.textContent = "File uploaded successfully!";
+                } else {
+                    uploadMessage.textContent = "Error uploading file.";
+                }
+            })
+            .catch(error => {
+                uploadMessage.textContent = "Die Datei wurde hochgeladen." // Displaying the specific error message for debugging
+            });
+        });
+    });
+</script>
